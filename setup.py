@@ -15,7 +15,7 @@ f.close()
 
 setup(
     name="pdfjinja",
-    version="1.0.0",
+    version="1.1.0",
     author="Ram Mehta",
     author_email="ram.mehta@gmail.com",
     url="http://github.com/rammie/pdfjinja/",
@@ -26,7 +26,7 @@ setup(
     install_requires=[
         "fdfgen>=0.13.0",
         "jinja2>=2.8",
-        "pdfminer.six==20160202",
+        "pdfminer.six==20170720",
         "Pillow>=3.2.0",
         "PyPDF2>=1.25.1",
         "reportlab>=3.3.0"

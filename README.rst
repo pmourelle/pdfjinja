@@ -95,3 +95,11 @@ If you are using this with Flask as a webserver::
 
 See examples/example.py for a more detailed python example. It might also be
 helpful to example the sample pdf template in examples/sample.pdf.
+
+
+Add-ons & tweaks in this version:
+---------------------------------
+
+- Image handling has been tweaked to add, and later subtract, a white background for dealing with transparent images, i.e. signatures. This way, we're able to use signatures (PNG files with transparent background) on documents.
+
+- Using newer version for pdfminer.six for better handling on mixed encodings.
