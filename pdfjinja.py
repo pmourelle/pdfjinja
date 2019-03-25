@@ -64,7 +64,7 @@ class Attachment(object):
         self.dimensions = dimensions or (0, 0, img.size[0], img.size[1])
 
         if img.mode == "RGBA":
-            self.img = Image.new("RGB", img.size, (255, 255, 255))
+            self.img = Image.new("RGBA", img.size, (255, 255, 255))
             mask = img.split()[-1]  # 3 is the alpha channel
             self.img.paste(img, mask=mask)
 
@@ -90,12 +90,12 @@ class Attachment(object):
         stream = BytesIO()
         pdf = canvas.Canvas(stream)
         w, h = self.img.size
-        pdf.drawImage(ImageReader(self.img), *self.dimensions)
+        pdf.drawImage(ImageReader(self.img), *self.dimensions, mask=[255] * 6)
 
         if hasattr(self, "label"):
             w, h = self.label.size
             x, y = self.label_x, self.label_y
-            pdf.drawImage(ImageReader(self.label), x, y, w, h)
+            pdf.drawImage(ImageReader(self.label), x, y, w, h, mask=[255] * 6)
 
         pdf.save()
         return PdfFileReader(stream).getPage(0)
